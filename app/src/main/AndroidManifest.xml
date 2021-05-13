@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.G_Management">
         <activity android:name=".activities.Signup"></activity>
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

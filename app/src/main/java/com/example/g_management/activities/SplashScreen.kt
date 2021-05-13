@@ -6,12 +6,12 @@ import android.os.Bundle
 import android.os.Handler
 import com.example.g_management.R
 
-class MainActivity : AppCompatActivity() {
+class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_splash)
         Handler().postDelayed({
             startActivity(Intent(this,Signup::class.java))
-        },5000)
+        },2500)
     }
 }
