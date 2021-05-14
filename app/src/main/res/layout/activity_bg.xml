@@ -8,5 +8,5 @@
         android:left="20dp"
         android:right="20dp"/>
     <solid
-        android:color="@color/gray"/>
+        android:color="@color/Secondary_blue"/>
 </shape>

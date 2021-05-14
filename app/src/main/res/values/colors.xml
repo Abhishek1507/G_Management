@@ -5,10 +5,14 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="grad1">#2C578A</color>
+    <color name="grad2">#20849C</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#B1B1B1</color>
     <color name="lgray">#D8D8D8</color>
     <color name="btnclr">#00BAD3</color>
+    <color name="Primary_blue">#192949</color>
+    <color name="Secondary_blue">#E7ECF6</color>
 
 </resources>

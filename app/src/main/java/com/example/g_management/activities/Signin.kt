@@ -1,16 +1,16 @@
 package com.example.g_management.activities
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import com.example.g_management.R
 
-class SplashScreen : AppCompatActivity() {
+
+
+class Signin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        setContentView(R.layout.activity_signin)
 
         //Custom Action Bar
         val actionBar: ActionBar? = supportActionBar
@@ -21,9 +21,7 @@ class SplashScreen : AppCompatActivity() {
             actionBar.setCustomView(R.layout.customtitlebar)
             actionBar.title = dynamicTitle
         }
-        //Delay
-        Handler().postDelayed({
-            startActivity(Intent(this,Signin::class.java))
-        },2500)
+
+
     }
 }
