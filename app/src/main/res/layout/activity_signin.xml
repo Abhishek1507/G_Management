@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.g_management.activities.ui.auth.AuthViewModel" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/rootlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="15dp"
     android:background="@layout/activity_bg"
-    tools:context=".activities.Signin">
+    tools:context=".activities.ui.auth.Signin">
 
     <EditText
         android:id="@+id/User_name_edittext"
@@ -20,15 +30,18 @@
         android:hint="@string/user_name"
         android:inputType="textPersonName"
         android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:text="@={viewmodel.username}"
         android:textColor="@color/Primary_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintVertical_bias="0.17"
+        android:autofillHints="@string/user_name" />
 
     <EditText
         android:id="@+id/password_edittext"
@@ -43,13 +56,16 @@
         android:hint="@string/password"
         android:inputType="textPassword"
         android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         android:paddingTop="10dp"
         android:textColor="@color/Primary_blue"
+        android:text="@={viewmodel.password}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/User_name_edittext"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.05"
+        android:autofillHints="@string/password" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/appCompatButton"
@@ -65,6 +81,7 @@
         android:text="@string/signin"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/white"
+        android:onClick="@{viewmodel::onLoginButtonClicked}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/remember" />
@@ -74,25 +91,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/proximaregular"
-        android:text="Remember me"
+        android:text="@string/remember"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_edittext" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/forgetpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
         android:fontFamily="@font/proximaregular"
-        android:text="Forgot password?"
+        android:text="@string/forget"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         android:textColor="#0000FF"
+        android:onClick="@{viewmodel::forgetPassword}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatButton" />
+        app:layout_constraintTop_toBottomOf="@+id/appCompatButton"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
