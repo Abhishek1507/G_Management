@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">G_Management</string>
+    <string name="app_name">Shitlai Auto Garage</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
+    <string name="signin">SIGN IN</string>
 </resources>
