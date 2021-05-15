@@ -4,24 +4,27 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.g_management.R
-import com.example.g_management.activities.util.toast
+import com.example.g_management.activities.util.*
 import com.example.g_management.databinding.ActivitySigninBinding
 
 
 class Signin : AppCompatActivity(),AuthListener {
 
-
+    private lateinit var binding: ActivitySigninBinding
+    private lateinit var viewModel: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //data binding
-        val binding : ActivitySigninBinding = DataBindingUtil.setContentView<ActivitySigninBinding>(this,R.layout.activity_signin)
-        val viewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
-        binding.viewmodel = viewModel
-        viewModel.authListener = this
+         binding  = DataBindingUtil.setContentView<ActivitySigninBinding>(this,R.layout.activity_signin)
+         viewModel = ViewModelProvider(this).get(AuthViewModel::class.java)
+         binding.viewmodel = viewModel
+         viewModel.authListener = this
 
         //Custom Action Bar
         val actionBar: ActionBar? = supportActionBar
@@ -33,16 +36,22 @@ class Signin : AppCompatActivity(),AuthListener {
             actionBar.title = dynamicTitle
         }
     }
-
-//Implementing AuthListener Methods
+    //Implementing AuthListener Methods
     override fun onStarted() {
-
+    binding.loginProgress.show()
     }
-    override fun onSuccess() {
-        toast("Login Successful")
+    override fun onSuccess(loginResponse: LiveData<String>) {
+        loginResponse.observe(this,  {
+            binding.loginProgress.hide()
+            toastShort(it)
+            logi("loginRes",it.toString())
+        })
     }
     override fun onFailed(message: String) {
-        toast(message)
+        binding.loginProgress.hide()
+        toastShort(message)
     }
+
+
 
 }

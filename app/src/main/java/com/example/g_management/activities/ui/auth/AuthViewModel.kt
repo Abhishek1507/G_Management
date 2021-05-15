@@ -2,6 +2,7 @@ package com.example.g_management.activities.ui.auth
 
 import android.view.View
 import androidx.lifecycle.ViewModel
+import com.example.g_management.activities.data.repositories.UserRepository
 
 class AuthViewModel : ViewModel() {
     var username: String? = null
@@ -15,7 +16,8 @@ class AuthViewModel : ViewModel() {
 
             return
         }
-        authListener?.onSuccess()
+        val loginResponse = UserRepository().userLogin(username!!,password!!)
+        authListener?.onSuccess(loginResponse)
 
 
     }
